@@ -9,5 +9,5 @@
         </footer>
 <!-- scripts -->
         <?php wp_footer(); ?>
-    </body>
+    </body> 
 </html>
