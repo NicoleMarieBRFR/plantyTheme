@@ -50,17 +50,18 @@ function plantytheme_sidebars(){
 
 add_filter( 'wp_nav_menu_items', 'prefix_add_menu_item', 10, 2 );
 function prefix_add_menu_item ( $items, $args ) {
-        
-    $items_array = array();
-            while ( false !== ( $item_pos = strpos ( $items, '<li', 10 ) ) ) // Add the position where the menu item is placed
-            {
-                $items_array[] = substr($items, 0, $item_pos);
-                $items = substr($items, $item_pos);
-            }
-            $items_array[] = $items;
-            array_splice($items_array, 1, 0, '<li><a href="' . get_admin_url() .'"> Admin </a></li>'); // insert custom item after 9th item one
-    
-            $items = implode('', $items_array);
-           
-           return $items;
-    }
+   if($args->theme_location == 'planty_theme_main_menu') {
+       $items_array = array();
+               while ( false !== ( $item_pos = strpos ( $items, '<li', 10 ) ) ) // Add the position where the menu item is placed
+               {
+                   $items_array[] = substr($items, 0, $item_pos);
+                   $items = substr($items, $item_pos);
+               }
+               $items_array[] = $items;
+               array_splice($items_array, 1, 0, '<li class="admin_button"><a href="' . get_admin_url() .'">Admin</a></li>'); // insert custom item after 1
+       
+               $items = implode('', $items_array);
+            }  
+              
+              return $items;
+}
