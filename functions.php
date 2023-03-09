@@ -4,7 +4,8 @@ require get_template_directory() . '/inc/customizer.php';
 
 function plantytheme_load_style(){
     wp_enqueue_style( 'template.css', get_template_directory_uri() . '/css/template.css'); 
-    wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0', true);  
+    wp_enqueue_script('scripts', get_template_directory_uri() . '/js/jquery.js', array(), '1.0', true);  
+    wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);  
 }
 add_action( 'wp_enqueue_scripts', 'plantytheme_load_style' );
 
